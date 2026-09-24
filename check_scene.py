@@ -9,10 +9,9 @@ import struct
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-STARTER = ROOT / "starter"
-STYLES = STARTER / "styles.css"
-HTML = STARTER / "index.html"
+ROOT = Path(__file__).resolve().parent
+STYLES = ROOT / "styles.css"
+HTML = ROOT / "index.html"
 LINES = [
     "stay curious",
     "be kind",
@@ -64,18 +63,18 @@ def load_module(path: Path, name: str):
 def main() -> None:
     styles = STYLES.read_text()
     html = HTML.read_text()
-    urls = re.findall(r"url\((\"|')?(\.\./[^)\"']+)", styles)
+    urls = re.findall(r"url\((\"|')?((?:background|logo|ui)/[^)\"']+)", styles)
     if len(urls) != 4:
         fail(f"scene asset map has {len(urls)} urls, expected 4")
     for _quote, rel in urls:
-        path = (STARTER / rel).resolve()
+        path = (ROOT / rel).resolve()
         if not path.is_file():
             fail(f"missing scene asset {rel}")
     if "mark-mobile" in styles or "values-sign.webp" in styles or "values-sign.png" in styles:
         fail("scene asset map still names a retired file")
     srcs = re.findall(r"\bsrc\s*=\s*[\"']([^\"']+)", html)
     if srcs != ["parallax.js"]:
-        fail(f"starter html sources are {srcs}")
+        fail(f"homepage sources are {srcs}")
 
     desktop = webp_size(ROOT / "background" / "hero-desktop-3840x2160.webp")
     mobile = webp_size(ROOT / "background" / "hero-mobile-1440x2560.webp")
@@ -107,13 +106,13 @@ def main() -> None:
         fail("breakpoint does not swap the background")
 
     favicon_builder = load_module(ROOT / "logo" / "build_favicon.py", "build_favicon")
-    favicon_path = STARTER / "favicon.svg"
+    favicon_path = ROOT / "favicon.svg"
     if not favicon_path.is_file() or favicon_path.read_text() != favicon_builder.favicon_svg():
         fail("favicon drifted from the emblem; run logo/build_favicon.py")
     if "<rect" in favicon_path.read_text():
         fail("favicon should stay transparent")
 
-    script = (STARTER / "parallax.js").read_text()
+    script = (ROOT / "parallax.js").read_text()
     if ".brand-mark" not in script or any(
         name in script for name in (".values-sign", ".wordmark", ".contact-pill", ".scene-bg")
     ):
@@ -135,7 +134,7 @@ def main() -> None:
         fail("lockup paths are not the emblem paths")
 
     frame = load_module(ROOT / "ui" / "build_values_frame.py", "build_values_frame")
-    css_path = STARTER / "values-lines.css"
+    css_path = ROOT / "values-lines.css"
     if css_path.read_text() != frame.line_css():
         fail("values line positions drifted from the glyph bounds")
     painted = png_size(ROOT / "ui" / "values-sign.png")

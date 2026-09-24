@@ -1,11 +1,11 @@
 @import "values-lines.css";
 
-/* Scene assets. The only file map for the starter. */
+/* Scene assets. The only file map for the page. */
 :root {
-  --scene-background-desktop: url("../background/hero-desktop-2560.webp");
-  --scene-background-mobile: url("../background/hero-mobile-1080.webp");
-  --scene-emblem: url("../logo/mark-desktop.svg");
-  --scene-values-frame: url("../ui/values-sign-frame.webp");
+  --scene-background-desktop: url("background/hero-desktop-2560.webp");
+  --scene-background-mobile: url("background/hero-mobile-1080.webp");
+  --scene-emblem: url("logo/mark-desktop.svg");
+  --scene-values-frame: url("ui/values-sign-frame.webp");
   --cream: #f7e5c4;
   --ink: #1e2728;
   --coral: #f05e50;

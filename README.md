@@ -2,7 +2,7 @@
 
 Build-ready split of the current twilight cabin design.
 
-Open `starter/index.html`, or the repo root, which forwards there.
+Open `index.html`. That is the homepage.
 
 ## Assets
 - `background/hero-desktop-2560.webp` — scene the starter paints on wide viewports, 2560×1440.
@@ -21,12 +21,12 @@ Open `starter/index.html`, or the repo root, which forwards there.
 - `ui/values-sign-2x.png` — painted sign master, lettering included, 2460×2556.
 - `ui/values-sign.png` — half-size painted master, 1230×1278.
 - `ui/values-sign-frame.webp` — the values frame the starter paints: posts, flowers, lantern, icons, blank planks.
-- `starter/` — the scene. File choices live in the custom properties at the top of `starter/styles.css`.
+- `index.html` — the homepage. File choices live in the custom properties at the top of `styles.css`.
 
 ## Recommended implementation
 Use the scene as the only full-bleed raster background. Keep the emblem, wordmark, contact pill, and values sign as independent parts so they can reposition on a narrow viewport.
 
-The starter sets the wordmark, the contact pill, and the four values lines in HTML. The values frame stays a painting behind those lines. `ui/build_values_frame.py` clears the painted lettering and writes `starter/values-lines.css`, which is where each line sits on the frame. Standalone SVG exports remain for reference.
+The homepage sets the wordmark, the contact pill, and the four values lines in HTML. The values frame stays a painting behind those lines. `ui/build_values_frame.py` clears the painted lettering and writes `values-lines.css`, which is where each line sits on the frame. Standalone SVG exports remain for reference.
 
 ## Layer order
 1. Background scene
@@ -39,4 +39,4 @@ The starter sets the wordmark, the contact pill, and the four values lines in HT
 The transparent PNG is the painterly image-model reference. The SVG is a clean web-safe vector recreation rather than an automatic trace, so it stays crisp at any size. Edit the emblem, then run `python3 logo/build_lockup.py` so the lockup picks up the same drawing.
 
 ## Check
-`python3 starter/check_scene.py` checks the scene-asset map, the values lines, the single placement breakpoint, and that the lockup still carries the emblem's paths.
+`python3 check_scene.py` checks the scene-asset map, the values lines, the single placement breakpoint, and that the lockup still carries the emblem's paths.

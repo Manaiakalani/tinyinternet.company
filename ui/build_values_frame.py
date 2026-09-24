@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Derive the values frame from the painted master.
 
-The four lines live in starter/index.html. This module owns the painted
+The four lines live in index.html. This module owns the painted
 rectangles those lines occupied, clears them, and records their centers
-for starter/values-lines.css.
+for values-lines.css.
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MASTER = ROOT / "ui" / "values-sign-2x.png"
 FRAME = ROOT / "ui" / "values-sign-frame.webp"
 PAINTED = ROOT / "ui" / "values-sign.png"
-LINES_CSS = ROOT / "starter" / "values-lines.css"
+LINES_CSS = ROOT / "values-lines.css"
 
 MASTER_W = 2460
 MASTER_H = 2556

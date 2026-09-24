@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MARK = ROOT / "logo" / "mark-desktop.svg"
-FAVICON = ROOT / "starter" / "favicon.svg"
+FAVICON = ROOT / "favicon.svg"
 STROKE_SCALE = 3.4
 HALO_SCALE = 5.2
 

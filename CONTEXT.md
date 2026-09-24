@@ -25,7 +25,7 @@ The garden sign. Its frame is painted. Its four lines are HTML.
 _Avoid_: poster, card
 
 **Scene assets**:
-The module that maps each part of the scene to the file that paints it. Callers name the part. The map is the custom properties at the top of `starter/styles.css`.
+The module that maps each part of the scene to the file that paints it. Callers name the part. The map is the custom properties at the top of `styles.css`.
 _Avoid_: manifest, asset pipeline
 
 **Values frame**:
