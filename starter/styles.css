@@ -1,0 +1,281 @@
+@import "values-lines.css";
+
+/* Scene assets. The only file map for the starter. */
+:root {
+  --scene-background-desktop: url("../background/hero-desktop-2560.webp");
+  --scene-background-mobile: url("../background/hero-mobile-1080.webp");
+  --scene-emblem: url("../logo/mark-desktop.svg");
+  --scene-values-frame: url("../ui/values-sign-frame.webp");
+  --cream: #f7e5c4;
+  --ink: #1e2728;
+  --coral: #f05e50;
+  --sans: "Albert Sans", "Avenir Next", "Segoe UI", sans-serif;
+  --display: Besley, "Iowan Old Style", Palatino, Georgia, serif;
+}
+
+/* Besley and Albert Sans, SIL Open Font License. Latin subsets only. */
+@font-face {
+  font-family: Besley;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/besley-500-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Besley;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/besley-700-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Albert Sans";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("fonts/albert-sans-latin.woff2") format("woff2");
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; min-height: 100%; background: #0c1731; }
+
+body {
+  font-family: var(--sans);
+}
+
+.hero ::selection {
+  background: var(--coral);
+  color: var(--ink);
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background-color: #0c1731;
+  background-image: var(--scene-background-desktop);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--cream);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(5, 12, 30, 0.08), rgba(5, 12, 30, 0.02) 42%, rgba(5, 12, 30, 0.12));
+}
+
+.brand-mark,
+.contact-pill,
+.wordmark,
+.values-sign { position: absolute; z-index: 2; }
+
+.brand-mark {
+  top: clamp(22px, 5vw, 64px);
+  left: clamp(8px, 4vw, 64px);
+  width: clamp(100px, 18vw, 310px);
+  aspect-ratio: 2 / 1;
+  background-image: var(--scene-emblem);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.contact-pill {
+  top: clamp(22px, 5vw, 68px);
+  right: clamp(8px, 4vw, 64px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32em;
+  min-height: 44px;
+  max-width: calc(100% - clamp(116px, 20vw, 340px));
+  padding: 0 clamp(10px, 1.45vw, 22px);
+  border: 1px solid rgba(30, 39, 40, 0.12);
+  border-radius: 999px;
+  color: var(--ink);
+  background: #f4e2c4;
+  text-decoration: none;
+  font-size: clamp(11px, 1.08vw, 16px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 232, 0.7),
+    0 10px 24px rgba(12, 18, 36, 0.14);
+  transition: box-shadow 160ms ease;
+}
+
+.contact-icon {
+  width: 0.95em;
+  height: 0.95em;
+  flex: none;
+  fill: currentColor;
+}
+
+.contact-icon path:last-child { fill: var(--coral); }
+
+.contact-pill:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 232, 0.7),
+    0 14px 28px rgba(12, 18, 36, 0.18);
+}
+
+.brand-mark:focus-visible,
+.contact-pill:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 4px;
+}
+
+.wordmark {
+  top: calc(6.5svh + max(0px, 640px - 100vw) * 0.5);
+  left: 50%;
+  width: min(40rem, calc(100% - 2.5rem));
+  transform: translateX(-50%);
+  text-align: center;
+  text-shadow:
+    0 1px 1px rgba(12, 18, 36, 0.45),
+    0 10px 24px rgba(8, 14, 32, 0.4);
+}
+
+.wordmark::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 46%;
+  width: min(140%, 46rem);
+  height: 118%;
+  transform: translate(-50%, -48%);
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(7, 14, 34, 0.46) 0%, rgba(7, 14, 34, 0.22) 48%, transparent 74%);
+}
+
+.wordmark h1 {
+  margin: 0;
+  padding-bottom: 0.22em;
+  font-family: var(--display);
+  font-size: clamp(4.35rem, 10vw, 9.25rem);
+  font-weight: 500;
+  font-synthesis: none;
+  letter-spacing: -0.03em;
+  line-height: 0.96;
+}
+
+.wordmark-lines {
+  position: relative;
+  margin-top: 0;
+  color: #fff6e8;
+}
+
+.wordmark-lines::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 52%;
+  width: min(100%, 22rem);
+  height: 120%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(8, 14, 32, 0.28) 0%, rgba(8, 14, 32, 0.08) 52%, transparent 74%);
+}
+
+.wordmark .company,
+.wordmark .tagline {
+  font-family: var(--display);
+  font-synthesis: none;
+  text-shadow:
+    0 1px 1px rgba(7, 12, 26, 0.5),
+    0 4px 14px rgba(7, 12, 26, 0.35);
+}
+
+.wordmark .company {
+  margin: 0;
+  color: var(--cream);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.05vw, 1.8rem);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.wordmark .tagline {
+  font-weight: 700;
+  display: grid;
+  justify-items: center;
+  gap: 0.08em;
+  margin: 0.4rem 0 0;
+  font-size: clamp(1.08rem, 1.75vw, 1.55rem);
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.values-sign {
+  left: clamp(12px, 2vw, 36px);
+  bottom: clamp(14px, 2.2vw, 32px);
+  width: clamp(12.5rem, 20vw, 340px);
+  aspect-ratio: 2460 / 2556;
+  container-type: inline-size;
+  background-image: var(--scene-values-frame);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.values-sign ol {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.values-sign li {
+  position: absolute;
+  left: var(--values-line-x);
+  width: 32%;
+  transform: translateY(-50%);
+  color: var(--cream);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 4.7cqw;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 0 rgba(42, 24, 12, 0.45);
+  white-space: nowrap;
+}
+
+.values-sign li:nth-child(1) { top: var(--values-line-1); }
+.values-sign li:nth-child(2) { top: var(--values-line-2); }
+.values-sign li:nth-child(3) { top: var(--values-line-3); }
+.values-sign li:nth-child(4) { top: var(--values-line-4); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Portrait background. Placement stays on the rules above. */
+@media (max-width: 720px) {
+  .hero {
+    background-image: var(--scene-background-mobile);
+    background-position: center top;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-pill { transition: none; }
+}
