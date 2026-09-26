@@ -112,6 +112,18 @@ def main() -> None:
         fail("favicon drifted from the emblem; run logo/build_favicon.py")
     if "<rect" in favicon_path.read_text():
         fail("favicon should stay transparent")
+    ico = (ROOT / "favicon.ico").read_bytes()
+    if ico[:4] != b"\x00\x00\x01\x00":
+        fail("favicon.ico is not an icon file")
+    if struct.unpack_from("<H", ico, 4)[0] < 2:
+        fail("favicon.ico needs more than one size")
+    if 'href="favicon.ico"' not in html or 'href="favicon.svg"' not in html:
+        fail("homepage is missing a favicon link")
+    touch = png_size(ROOT / "apple-touch-icon.png")
+    if touch != (180, 180):
+        fail(f"apple touch icon is {touch}")
+    if 'href="apple-touch-icon.png"' not in html:
+        fail("homepage does not link the apple touch icon")
 
     script = (ROOT / "parallax.js").read_text()
     if ".brand-mark" not in script or any(
