@@ -73,7 +73,8 @@ def main() -> None:
     if "mark-mobile" in styles or "values-sign.webp" in styles or "values-sign.png" in styles:
         fail("scene asset map still names a retired file")
     srcs = re.findall(r"\bsrc\s*=\s*[\"']([^\"']+)", html)
-    if srcs != ["parallax.js"]:
+    analytics = "https://analytics.manaiakalani.info/api/script.js?siteId=8e29cd0f40e2"
+    if srcs != [analytics, "parallax.js"]:
         fail(f"homepage sources are {srcs}")
 
     desktop = webp_size(ROOT / "background" / "hero-desktop-3840x2160.webp")

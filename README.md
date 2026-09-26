@@ -38,5 +38,15 @@ The homepage sets the wordmark, the contact pill, and the four values lines in H
 ## Logo note
 The transparent PNG is the painterly image-model reference. The SVG is a clean web-safe vector recreation rather than an automatic trace, so it stays crisp at any size. Edit the emblem, then run `python3 logo/build_lockup.py` so the lockup picks up the same drawing.
 
+## Analytics
+The homepage loads Rybbit with `defer`, so the cabin still paints first.
+
+```html
+<script
+    src="https://analytics.manaiakalani.info/api/script.js?siteId=8e29cd0f40e2"
+    defer
+></script>
+```
+
 ## Check
-`python3 check_scene.py` checks the scene-asset map, the values lines, the single placement breakpoint, and that the lockup still carries the emblem's paths.
+`python3 check_scene.py` checks the scene-asset map, the values lines, the single placement breakpoint, the Rybbit script, and that the lockup still carries the emblem's paths.
