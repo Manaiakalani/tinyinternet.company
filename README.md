@@ -4,6 +4,8 @@ Build-ready split of the current twilight cabin design.
 
 Open `index.html`. That is the homepage.
 
+![tiny internet company, the twilight cabin homepage](docs/screenshot.png)
+
 ## Assets
 - `background/hero-desktop-2560.webp`: scene the starter paints on wide viewports, 2560×1440.
 - `background/hero-desktop-3840x2160.webp`: wider master of that scene, 3840×2160.
